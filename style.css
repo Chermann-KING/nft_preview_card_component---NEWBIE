@@ -79,42 +79,59 @@ main {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1),
     -10px 10px 10px rgba(0, 0, 0, 0.1);
 }
-.card-img,
+.card-image,
+div.card-image > a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-image {
+  position: relative;
+  height: 60%;
+  border-radius: var(--borderRadius);
+  margin-bottom: var(--marginBottom);
+}
+div.card-image > a,
+div.card-image > a > img:first-of-type,
+.card-image img:last-of-type {
+  position: absolute;
+}
+
+div.card-image > a {
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  background-color: hsl(178, 100%, 50%, 0.7);
+  border-radius: var(--borderRadius);
+  transition: all 0.3s ease;
+}
+div.card-image > a > img:first-of-type {
+  left: 124px;
+  top: 124px;
+  width: 50px;
+  height: 50px;
+}
+.card-image img:last-of-type {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--borderRadius);
+}
+div.card-image > a:hover {
+  opacity: 1;
+}
+
 .card-infos h1,
 .row {
   width: 100%;
-}
-.card-img,
-.overlay {
-  height: 280px;
-  border-radius: var(--borderRadius);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.card-img {
-  background-image: url("./images/image-equilibrium.jpg");
-  background-size: cover;
-}
-.overlay {
-  background-color: var(--cyan);
-  background-size: 40px;
-  background-image: url("./images/icon-view.svg");
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-.overlay:hover {
-  opacity: 0.6;
 }
 .card-infos h1 {
   font-size: calc(var(--fontSize) * 1.4);
   font-weight: 600;
   color: var(--white);
-}
-.card-infos h1:hover,
-.name:hover {
-  color: var(--cyan);
-  cursor: pointer;
 }
 .card-infos > p {
   color: var(--softBlue);
@@ -161,8 +178,14 @@ hr,
 .author {
   color: var(--softBlue);
 }
-.name {
+h1 a,
+.author a {
   color: var(--white);
+  transition: color 0.3s ease;
+}
+h1 a:hover,
+.author a:hover {
+  color: var(--cyan);
 }
 
 @media screen and (width < 375px) {
